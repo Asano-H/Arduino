@@ -26,7 +26,14 @@ void loop() {
   			digitalWrite(myLED_2, LOW);
   			digitalWrite(myLED_3, HIGH);
   			delay(num);
-  			
+  			digitalWrite(myLED_3, LOW);
+  			digitalWrite(myLED_4, HIGH);
+  			delay(num);
+  			digitalWrite(myLED_4, LOW);
+  			n=digitalRead(switch);
+  			if(n==LOW){
+  				break;
+  			}
   		}
   	}
 }
