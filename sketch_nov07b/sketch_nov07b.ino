@@ -35,5 +35,10 @@ void loop() {
   				break;
   			}
   		}
+  	}else{
+  		digitalWrite(myLED_1, LOW);
+  		digitalWrite(myLED_2, LOW);
+  		digitalWrite(myLED_3, LOW);
+  		digitalWrite(myLED_4, LOW);
   	}
 }
