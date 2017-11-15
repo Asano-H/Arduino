@@ -18,11 +18,17 @@ void setup() {
 
  	switch (dice) {
     	case 1:
-        	digitalWrite(, HIGH);
+        	digitalWrite(LED_A, HIGH);
         	break;
-     	case :
-        	// do something
+     	case 2:
+        	digitalWrite(LED_B, HIGH);
         	break;
+      case 3:
+          digitalWrite(LED_A, HIGH);
+          digitalWrite(LED_B, HIGH);
+      case 4:
+          digitalWrite(LED_B, HIGH);
+          digitalWrite(LED_C, HIGH);
       	default:
         	// do something
   	}
