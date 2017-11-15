@@ -1,7 +1,7 @@
 #define switch 3
 
-int dice
-ms = 100
+int dice;
+int ms = 3000;
 int ransu(void){
 	int ra;
 	srand((unsigned)time(NULL));
@@ -16,6 +16,7 @@ void setup() {
  	pinMode(LED_C, OUTPUT);
  	pinMode(LED_D, OUTPUT);
 
+  dice = ransu();
  	switch (dice) {
     	case 1:
         	digitalWrite(LED_A, HIGH);
@@ -33,16 +34,19 @@ void setup() {
       case 4:
           digitalWrite(LED_B, HIGH);
           digitalWrite(LED_C, HIGH);
+          delay(ms);
           break;
       case 5:
           digitalWrite(LED_A, HIGH);
           digitalWrite(LED_B, HIGH);
           digitalWrite(LED_C, HIGH);
+          delay(ms);
           break;
       case 6;
           digitalWrite(LED_B, HIGH);
           digitalWrite(LED_C, HIGH);
           digitalWrite(LED_D, HIGH);
+          delay(ms);
           break;
   	}
 }
