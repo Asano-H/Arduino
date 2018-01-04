@@ -8,7 +8,7 @@ pikapika::pikapika(int time,int pin){
 	pinMode(myled_pin, OUTPUT);
 }
 
-void pikapika::tenmetsu(time){
+void pikapika::tenmetsu(int time){
 	digitalWrite(myled_pin, HIGH);
 	delay(time);
 	digitalWrite(myled_pin, LOW);
