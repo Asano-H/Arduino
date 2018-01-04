@@ -1,17 +1,16 @@
 #include "Arduino.h"
 #include "jan04.h"
 
-/*コンストラクタ*/
-pikapika::pikapika(int time,int pin){
-	myled_time = time;
+pikapika::pikapika(int times,int pin){
+	myled_time = times;
 	myled_pin = pin;
 	pinMode(myled_pin, OUTPUT);
 }
 
-void pikapika::tenmetsu(int time){
+void pikapika::tenmetsu(int times){
 	digitalWrite(myled_pin, HIGH);
-	delay(time);
+	delay(times);
 	digitalWrite(myled_pin, LOW);
-	delay(time);
+	delay(times);
 
 }
