@@ -142,18 +142,34 @@ void setup(){
 	digitalWrite(pico_reset, HIGH);		/*リセット*/
 	delay(80);
 
+	/*気を付け*/
+	headservo.write(90);
+	rightservo.write(90);
+	leftservo.write(90);
+	delay(300);
+
+	
+	/*挨拶*/
+	pico_ms04();
+	delay(3000);
+	pico_ms13();
+	headservo.write(180);	/*顔左*/
+	rightservo.write(180);	/*右手前に*/
+	delay(5000);
+
+	/*気を付け*/
+	headservo.write(90);
+	rightservo.write(90);
+	leftservo.write(90);
+	delay(300);
+
+	/*お話お誘い*/
 	pico_ms03();
-	rightservo.write(0);
-	delay(100000);
-	leftservo.write(0);
-	delay(100000);
 	rightservo.write(180);
-	delay(100000);
-	leftservo.write(180);
-	delay(100000);
-	rightservo.write(180);
-	delay(100000);
-	leftservo.write(0);
+	leftservo.write(0);		/*ばんざい*/
+
+
+	
 
 
 
