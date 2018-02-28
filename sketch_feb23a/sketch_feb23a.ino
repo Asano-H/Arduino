@@ -1,6 +1,7 @@
 #include <Servo.h>
+#include <VarSpeedServo.h>
 
-Servo headservo;
+VarSpeedServo headservo;
 Servo rightservo;
 Servo leftservo;
 
@@ -143,7 +144,7 @@ void setup(){
 	delay(80);
 
 	/*気を付け*/
-	headservo.write(90);
+	headservo.write(90,30,true);
 	rightservo.write(90);
 	leftservo.write(90);
 	delay(300);
@@ -153,12 +154,12 @@ void setup(){
 	pico_ms04();
 	delay(3000);
 	pico_ms13();
-	headservo.write(180);	/*顔左*/
+	headservo.write(180,1,true);	/*顔左*/
 	rightservo.write(180);	/*右手前に*/
 	delay(5000);
 
 	/*気を付け*/
-	headservo.write(90);
+	headservo.write(90,225,true);
 	rightservo.write(90);
 	leftservo.write(90);
 	delay(300);
