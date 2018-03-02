@@ -136,12 +136,18 @@ void setup(){
 	pinMode(pico_pc1, OUTPUT);
 	pinMode(pico_pc0, OUTPUT);	/*pico_pcとresetは出力とする(プルアップ)*/
 
+
+}
+
+void loop() {
+
 	digitalWrite(pico_sleep, LOW);	/*スリープ状態*/
 	delay(100);
 	digitalWrite(pico_reset, LOW);
 	delay(80);
 	digitalWrite(pico_reset, HIGH);		/*リセット*/
 	delay(80);
+
 
 	/*気を付け*/
 	headservo.write(90,30,true);
@@ -170,18 +176,9 @@ void setup(){
 	leftservo.write(0);		/*ばんざい*/
 
 
-	
-
-
-
-  
-
-}
-
-void loop() {
-	// headservo.write(0);
-	// delay(1000);
-	// headservo.write(90);
-	// delay(1000);
+	headservo.write(0,1,true);
+	delay(1000);
+	headservo.write(90,255,true);
+	delay(1000);
 
 }
