@@ -5,12 +5,12 @@ VarSpeedServo headservo;
 Servo rightservo;
 Servo leftservo;
 
-#define pico_sleep	2
-#define pico_reset	4
-#define pico_pc0	5
-#define pico_pc1	6
-#define pico_pc2	7
-#define pico_pc3	8
+#define pico_sleep	2	/*D2*/
+#define pico_reset	4	/*D4*/
+#define pico_pc0	5	/*D5*/
+#define pico_pc1	6	/*D6*/
+#define pico_pc2	7	/*D7*/
+#define pico_pc3	8	/*D8*/
 
 void pico_ms00(){
 	digitalWrite(pico_pc3, LOW);	/*0000:しゃべってくれない？*/
@@ -126,9 +126,9 @@ void pico_ms15(){
 
 void setup(){
 
-	headservo.attach(9);	/*頭　　 9ピン*/
-	rightservo.attach(10);	/*右腕　10ピン*/
-	leftservo.attach(11);	/*左腕　11ピン*/
+	rightservo.attach(9);	/*右腕　D9*/
+	leftservo.attach(10);	/*左腕　D10*/
+	headservo.attach(11);	/*頭　　D11*/
 
 	pinMode(pico_reset, OUTPUT);
 	pinMode(pico_pc3, OUTPUT);
