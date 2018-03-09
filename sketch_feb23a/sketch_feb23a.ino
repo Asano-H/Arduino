@@ -1,9 +1,9 @@
-#include <Servo.h>
+// #include <Servo.h>
 #include <VarSpeedServo.h>
 
 VarSpeedServo headservo;
-Servo rightservo;
-Servo leftservo;
+VarSpeedServo rightservo;
+VarSpeedServo leftservo;
 
 #define pico_sleep	2	/*D2*/
 #define pico_reset	4	/*D4*/
@@ -137,11 +137,8 @@ void setup(){
 	pinMode(pico_pc0, OUTPUT);	/*pico_pcとresetは出力とする(プルアップ)*/
 
 
-}
 
-void loop() {
-
-	digitalWrite(pico_sleep, LOW);	/*スリープ状態*/
+digitalWrite(pico_sleep, LOW);	/*スリープ状態*/
 	delay(100);
 	digitalWrite(pico_reset, LOW);
 	delay(80);
@@ -150,35 +147,46 @@ void loop() {
 
 
 	/*気を付け*/
-	headservo.write(90,30,true);
-	rightservo.write(90);
-	leftservo.write(90);
-	delay(300);
+	headservo.write(90, 50);
+	rightservo.write(90, 50);
+	leftservo.write(90, 50);
+	delay(10000);
 
 	
 	/*挨拶*/
 	pico_ms04();
 	delay(3000);
 	pico_ms13();
-	headservo.write(180,1,true);	/*顔左*/
-	rightservo.write(180);	/*右手前に*/
-	delay(5000);
+	headservo.write(180, 50);	/*顔左*/
+	rightservo.write(180, 50);	/*右手前に*/
+	delay(10000);
 
 	/*気を付け*/
-	headservo.write(90,225,true);
-	rightservo.write(90);
-	leftservo.write(90);
-	delay(300);
+	headservo.write(90, 50);
+	rightservo.write(90, 50);
+	leftservo.write(90, 50);
+	delay(10000);
 
 	/*お話お誘い*/
 	pico_ms03();
-	rightservo.write(180);
-	leftservo.write(0);		/*ばんざい*/
+	headservo.write(180, 50);
+	rightservo.write(180,50);		/*ばんざい*/
+	leftservo.write(0, 50);
+	delay(10000);
+
+	/*気を付けして止まる*/
+	headservo.write(90, 50);
+	delay(10000);
+	rightservo.detach();
+	leftservo.detach();
+	headservo.detach();
 
 
-	headservo.write(0,1,true);
-	delay(1000);
-	headservo.write(90,255,true);
-	delay(1000);
+}
+
+
+
+void loop() {
+
 
 }
