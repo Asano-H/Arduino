@@ -1,10 +1,16 @@
 #include <VarSpeedServo.h>
 
+//servo
 VarSpeedServo headservo;
 VarSpeedServo rightservo;
 VarSpeedServo leftservo;
 
-#define pico_sleep	2	//D2
+//LED(RGB)
+const int LED_color[] = {0,1,2};	//R:D1 G:D1 B:D2
+
+//AquesTalkpico
+#define pico_sleep	3	//D3
+#define pico_reset	4	//D4
 #define pico_pc0	5	//D5
 #define pico_pc1	6	//D6
 #define pico_pc2	7	//D7
@@ -180,6 +186,10 @@ digitalWrite(pico_sleep, LOW);	//スリープ状態
 	rightservo.detach();
 	leftservo.detach();
 	headservo.detach();
+
+	//ダイナミック点灯
+
+
 
 
 }
