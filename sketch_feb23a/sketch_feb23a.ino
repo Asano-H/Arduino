@@ -1,12 +1,13 @@
 #include <VarSpeedServo.h>
 
 //servo
-VarSpeedServo headservo;
-VarSpeedServo rightservo;
-VarSpeedServo leftservo;
+VarSpeedServo rightservo;	//D9
+VarSpeedServo leftservo;	//D10
+VarSpeedServo headservo;	//D11
 
 //LED(RGB)
 const int LED_color[] = {0,1,2};	//R:D1 G:D1 B:D2
+const int LED_cathode[] ={12,13};	//右:12 左:13
 
 //AquesTalkpico
 #define pico_sleep	3	//D3
@@ -142,6 +143,13 @@ void setup(){
 	pinMode(pico_pc1, OUTPUT);
 	pinMode(pico_pc0, OUTPUT);	//pico_pcとresetは出力とする(プルアップ)
 
+	for(int i=0; i<3; i++){
+		pinMode(LED_color, OUTPUT);	//LED
+	}
+	for(int i=0; i<2; i++){
+		pinMode(LED_cathode, OUTPUT);
+	}
+
 
 
 digitalWrite(pico_sleep, LOW);	//スリープ状態
@@ -188,6 +196,7 @@ digitalWrite(pico_sleep, LOW);	//スリープ状態
 	headservo.detach();
 
 	//ダイナミック点灯
+
 
 
 
