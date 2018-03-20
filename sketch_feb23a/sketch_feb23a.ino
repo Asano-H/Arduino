@@ -144,10 +144,10 @@ void setup(){
 	pinMode(pico_pc0, OUTPUT);	//pico_pcとresetは出力とする(プルアップ)
 
 	for(int i=0; i<3; i++){
-		pinMode(LED_color, OUTPUT);	//LED
+		pinMode(LED_color, OUTPUT);	//LED_colorは出力
 	}
 	for(int i=0; i<2; i++){
-		pinMode(LED_cathode, OUTPUT);
+		pinMode(LED_cathode, OUTPUT);	//LED_cathodeは出力
 	}
 
 
