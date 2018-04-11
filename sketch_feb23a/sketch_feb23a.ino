@@ -1,9 +1,9 @@
-#include <VarSpeedServo.h>
+#include <Servo.h>
 
 //servo
-VarSpeedServo rightservo;	//D9
-VarSpeedServo leftservo;	//D10
-VarSpeedServo headservo;	//D11
+Servo rightservo;	//D9
+Servo leftservo;	//D10
+Servo headservo;	//D11
 
 //LED(RGB)
 const int LED_color[] = {0,1,2};	//R:D1 G:D1 B:D2
@@ -133,9 +133,9 @@ void pico_ms15(){
 
 void setup(){
 
-	rightservo.attach(9);	//右腕　D9
-	leftservo.attach(10);	//左腕　D10
-	headservo.attach(11);	//頭　　D11
+	rightservo.attach(9);	//右腕	D9
+	leftservo.attach(10);	//左腕	D10
+	headservo.attach(11);	//頭		D11
 
 	pinMode(pico_reset, OUTPUT);
 	pinMode(pico_pc3, OUTPUT);
@@ -161,9 +161,9 @@ digitalWrite(pico_sleep, LOW);	//スリープ状態
 
 
 	//気を付け
-	headservo.write(90, 50);
-	rightservo.write(90, 50);
-	leftservo.write(90, 50);
+	headservo.write(90);
+	rightservo.write(90);
+	leftservo.write(90);
 	delay(10000);
 
 	
@@ -171,25 +171,25 @@ digitalWrite(pico_sleep, LOW);	//スリープ状態
 	pico_ms04();
 	delay(3000);
 	pico_ms13();
-	headservo.write(180, 50);	//顔左
-	rightservo.write(180, 50);	//右手前に
+	headservo.write(180);	//顔左
+	rightservo.write(180);	//右手前に
 	delay(10000);
 
 	//気を付け
-	headservo.write(90, 50);
-	rightservo.write(90, 50);
-	leftservo.write(90, 50);
+	headservo.write(90);
+	rightservo.write(90);
+	leftservo.write(90);
 	delay(10000);
 
 	//お話お誘い
 	pico_ms03();
-	headservo.write(180, 50);
-	rightservo.write(180,50);		//ばんざい
-	leftservo.write(0, 50);
+	headservo.write(180);
+	rightservo.write(180);		//ばんざい
+	leftservo.write(0);
 	delay(10000);
 
 	//気を付けして止まる
-	headservo.write(90, 50);
+	headservo.write(90);
 	delay(10000);
 	rightservo.detach();
 	leftservo.detach();
