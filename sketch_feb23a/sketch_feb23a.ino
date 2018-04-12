@@ -17,7 +17,21 @@ const int LED_cathode[] ={12,13};	//右:12 左:13
 #define pico_pc2	7	//D7
 #define pico_pc3	8	//D8
 
+#define now_angle
 
+void slowspeedservo(int ang,int sec_servo){
+	if(now_angle<=ang){
+		for(int i=now_angle; i<ang; i++){
+			sec_servo.write(ang);
+			delay(10);
+		}
+	}else{
+		for(int i=now_angle; i>ang; i--){
+			sec_servo.write(ang);
+			delay(10);
+		}
+	}
+}
 
 void pico_ms00(){
 	digitalWrite(pico_pc3, LOW);	//0000:しゃべらない
