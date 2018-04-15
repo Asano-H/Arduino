@@ -17,23 +17,59 @@ const int LED_cathode[] ={12,13};	//右:12 左:13
 #define pico_pc2	7	//D7
 #define pico_pc3	8	//D8
 
-int now_angle=0;
+int nowangle_right=0;
+int nowangle_left=0;
+int nowangle_head=0;
+
+void slow_right(int ang){
+	int i;
+	if(nowangle_right < ang){
+		for(i=nowangle_right; i<ang; i++){
+			rightservo.write(i);
+			delay(100);
+		}
+	}else{
+		for(i=nowangle_right; i>ang; i--){
+			rightservo.write(i);
+			delay(100);
+		}
+	}
+	rightservo.detach();
+	nowangle_right = ang;
+}
+
+void slow_left(int ang){
+	int i;
+	if(nowangle_left < ang){
+		for(i=nowangle_left; i<ang; i++){
+			leftservo.write(i);
+			delay(100);
+		}
+	}else{
+		for(i=nowangle_left; i>ang; i--){
+			leftservo.write(i);
+			delay(100);
+		}
+	}
+	leftservo.detach();
+	nowangle_left = ang;
+}
 
 void slow_head(int ang){
 	int i;
-	if(now_angle < ang){
-		for(i=now_angle; i<ang; i++){
+	if(nowangle_head < ang){
+		for(i=nowangle_head; i<ang; i++){
 			headservo.write(i);
 			delay(100);
 		}
 	}else{
-		for(i=now_angle; i>ang; i--){
+		for(i=nowangle_head; i>ang; i--){
 			headservo.write(i);
 			delay(100);
 		}
 	}
 	headservo.detach();
-	now_angle = ang;
+	nowangle_head = ang;
 }
 
 void pico_ms00(){
