@@ -34,7 +34,6 @@ void slow_right(int ang){
 			delay(100);
 		}
 	}
-	rightservo.detach();
 	nowangle_right = ang;
 }
 
@@ -51,7 +50,6 @@ void slow_left(int ang){
 			delay(100);
 		}
 	}
-	leftservo.detach();
 	nowangle_left = ang;
 }
 
@@ -60,15 +58,14 @@ void slow_head(int ang){
 	if(nowangle_head < ang){
 		for(i=nowangle_head; i<ang; i++){
 			headservo.write(i);
-			delay(100);
+			delay(50);
 		}
 	}else{
 		for(i=nowangle_head; i>ang; i--){
 			headservo.write(i);
-			delay(100);
+			delay(50);
 		}
 	}
-	headservo.detach();
 	nowangle_head = ang;
 }
 
@@ -213,47 +210,44 @@ digitalWrite(pico_sleep, LOW);	//スリープ状態
 	delay(80);
 
 
-	// //気を付け
-	// headservo.write(90);
-	// rightservo.write(90);
-	// leftservo.write(90);
-	// delay(10000);
+	//気を付け
+	slow_head(90);
+	slow_right(90);
+	slow_left(90);
+	delay(10000);
 
 	
-	// //挨拶
-	// pico_ms04();
-	// delay(3000);
-	// pico_ms13();
-	// headservo.write(180);	//顔左
-	// rightservo.write(180);	//右手前に
-	// delay(10000);
+	//挨拶
+	pico_ms04();
+	delay(3000);
+	pico_ms13();
+	slow_head(180);	//顔左
+	slow_right(0);	//右手前に
+	delay(30000);
 
-	// //気を付け
-	// headservo.write(90);
-	// rightservo.write(90);
-	// leftservo.write(90);
-	// delay(10000);
+	//気を付け
+	slow_head(90);
+	slow_right(90);
+	slow_left(90);
+	delay(30000);
 
-	// //お話お誘い
-	// pico_ms03();
-	// headservo.write(180);
-	// rightservo.write(180);		//ばんざい
-	// leftservo.write(0);
-	// delay(10000);
+	//お話お誘い
+	pico_ms03();
+	slow_head(180);
+	slow_right(180);		//ばんざい
+	slow_left(0);
+	delay(30000);
 
 
 
-	// //気を付けして止まる
-	// headservo.write(90);
-	// delay(10000);
-	// rightservo.detach();
-	// leftservo.detach();
-	// headservo.detach();
+	//気を付けして止まる
+	slow_head(90);
+	delay(30000);
+	rightservo.detach();
+	leftservo.detach();
+	headservo.detach();
 
 	//ダイナミック点灯
-
-
-	slow_head(180);
 
 
 }
