@@ -17,9 +17,9 @@ const int LED_cathode[] ={12,13};	//右:12 左:13
 #define pico_pc2	7	//D7
 #define pico_pc3	8	//D8
 
-int nowangle_right=0;
-int nowangle_left=0;
-int nowangle_head=0;
+int nowangle_right=90;
+int nowangle_left=90;
+int nowangle_head=90;
 
 void slow_right(int ang){
 	int i;
