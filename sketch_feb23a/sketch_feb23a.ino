@@ -17,20 +17,23 @@ const int LED_cathode[] ={12,13};	//右:12 左:13
 #define pico_pc2	7	//D7
 #define pico_pc3	8	//D8
 
-#define now_angle
+int now_angle=0;
 
-void slowspeedservo(int ang,int sec_servo){
-	if(now_angle<=ang){
-		for(int i=now_angle; i<ang; i++){
-			sec_servo.write(ang);
-			delay(10);
+void slow_head(int ang){
+	int i;
+	if(now_angle < ang){
+		for(i=now_angle; i<ang; i++){
+			headservo.write(i);
+			delay(100);
 		}
 	}else{
-		for(int i=now_angle; i>ang; i--){
-			sec_servo.write(ang);
-			delay(10);
+		for(i=now_angle; i>ang; i--){
+			headservo.write(i);
+			delay(100);
 		}
 	}
+	headservo.detach();
+	now_angle = ang;
 }
 
 void pico_ms00(){
@@ -174,45 +177,47 @@ digitalWrite(pico_sleep, LOW);	//スリープ状態
 	delay(80);
 
 
-	//気を付け
-	headservo.write(90);
-	rightservo.write(90);
-	leftservo.write(90);
-	delay(10000);
+	// //気を付け
+	// headservo.write(90);
+	// rightservo.write(90);
+	// leftservo.write(90);
+	// delay(10000);
 
 	
-	//挨拶
-	pico_ms04();
-	delay(3000);
-	pico_ms13();
-	headservo.write(180);	//顔左
-	rightservo.write(180);	//右手前に
-	delay(10000);
+	// //挨拶
+	// pico_ms04();
+	// delay(3000);
+	// pico_ms13();
+	// headservo.write(180);	//顔左
+	// rightservo.write(180);	//右手前に
+	// delay(10000);
 
-	//気を付け
-	headservo.write(90);
-	rightservo.write(90);
-	leftservo.write(90);
-	delay(10000);
+	// //気を付け
+	// headservo.write(90);
+	// rightservo.write(90);
+	// leftservo.write(90);
+	// delay(10000);
 
-	//お話お誘い
-	pico_ms03();
-	headservo.write(180);
-	rightservo.write(180);		//ばんざい
-	leftservo.write(0);
-	delay(10000);
+	// //お話お誘い
+	// pico_ms03();
+	// headservo.write(180);
+	// rightservo.write(180);		//ばんざい
+	// leftservo.write(0);
+	// delay(10000);
 
-	//気を付けして止まる
-	headservo.write(90);
-	delay(10000);
-	rightservo.detach();
-	leftservo.detach();
-	headservo.detach();
+
+
+	// //気を付けして止まる
+	// headservo.write(90);
+	// delay(10000);
+	// rightservo.detach();
+	// leftservo.detach();
+	// headservo.detach();
 
 	//ダイナミック点灯
 
 
-
+	slow_head(180);
 
 
 }
