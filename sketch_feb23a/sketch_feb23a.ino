@@ -26,12 +26,12 @@ void slow_right(int ang){
 	if(nowangle_right < ang){
 		for(i=nowangle_right; i<ang; i++){
 			rightservo.write(i);
-			delay(100);
+			delay(10);
 		}
 	}else{
 		for(i=nowangle_right; i>ang; i--){
 			rightservo.write(i);
-			delay(100);
+			delay(10);
 		}
 	}
 	nowangle_right = ang;
