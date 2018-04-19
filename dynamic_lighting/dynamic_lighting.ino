@@ -4,7 +4,7 @@
 #define myLED_green	6
 #define myLED_blue	7
 
-#define my_swith 8
+#define switch 8
 
 int color;
 int n=0;
@@ -14,11 +14,12 @@ void LED_red(){
 	digitalWrite(myLED_left, HIGH);
 	digitalWrite(myLED_red,HIGH);
 
-	for(int i=0;n==LOW;i++){
+	while(n==HIGH){
 		digitalWrite(myLED_left,LOW);
 		digitalWrite(myLED_left, HIGH);
 		digitalWrite(myLED_right,LOW);
 		digitalWrite(myLED_right, HIGH);
+		n = digitalRead(switch);
 	}
 
 }
@@ -28,25 +29,27 @@ void LED_green(){
 	digitalWrite(myLED_left, HIGH);
 	digitalWrite(myLED_green,HIGH);
 
-	for(int i=0;n==LOW;i++){
+	while(n==HIGH){
 		digitalWrite(myLED_left,LOW);
 		digitalWrite(myLED_left, HIGH);
 		digitalWrite(myLED_right,LOW);
 		digitalWrite(myLED_right, HIGH);
+		n = digitalRead(switch);
 	}
 
 }
 
-void LED_green(){
+void LED_blue(){
 	digitalWrite(myLED_right, HIGH);
 	digitalWrite(myLED_left, HIGH);
 	digitalWrite(myLED_blue,HIGH);
 
-	for(int i=0;n==LOW;i++){
+	while(n==HIGH){
 		digitalWrite(myLED_left,LOW);
 		digitalWrite(myLED_left, HIGH);
 		digitalWrite(myLED_right,LOW);
 		digitalWrite(myLED_right, HIGH);
+		n = digitalRead(switch);
 	}
 
 }
@@ -59,26 +62,29 @@ void setup() {
 	pinMode(myLED_green, OUTPUT);
 	pinMode(myLED_blue, OUTPUT);
 
-	n=digitalRead(my_switch);
-	if(n==HIGH){
-		color = random(2);
-		switch(color){
-			case 0: LED_red(); break;
-			case 1: LED_green(); break;
-			case 2: LED_blue(); break;
-		}
-
-
-	}
-
-
-
-	LED_red();
 
   
 }
 
 void loop() {
+
+	n=digitalRead(switch);
+	if(n==HIGH){
+		color = random(2);
+		if(color==0){
+			LED_red();
+		}else if(color==1){
+			LED_green();
+		}else if{
+			LED_blue();
+		}
+	}else{
+		digitalWrite(myLED_red, LOW);
+		digitalWrite(myLED_green, LOW);
+		digitalWrite(myLED_blue, LOW);
+		digitalWrite(myLED_right, LOW);
+		digitalWrite(myLED_left, LOW);
+	}
 
 
 
