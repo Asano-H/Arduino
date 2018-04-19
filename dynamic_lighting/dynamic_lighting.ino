@@ -75,7 +75,7 @@ void loop() {
 			LED_red();
 		}else if(color==1){
 			LED_green();
-		}else if{
+		}else if(color==2){
 			LED_blue();
 		}
 	}else{
