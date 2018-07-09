@@ -6,8 +6,8 @@
 
 #define myswitch 8
 
-int color;
-int LED_switch=0;
+int color_left;
+int color_right;
 
 void LED_red(int sign){
 	digitalWrite(myLED_red, HIGH);
@@ -53,12 +53,33 @@ void setup() {
 
 void loop() {
 
-	LED_red(myLED_right);
+//ボタンが押されたとき，色を変える
+	if(digitalRead(myswitch)==HIGH){
+		color_right = random(3);
+		color_left = random(3);
+	}
+
+//右目の色を変える
+	switch(color_right){
+		case 0:	LED_red(myLED_right);
+				break;
+		case 1:	LED_green(myLED_right);
+				break;
+		case 2:	LED_blue(myLED_right);
+				break;
+	}
 	digitalWrite(myLED_right, HIGH);
 
-	LED_blue(myLED_left);
+//左目の色を変える
+		switch(color_left){
+		case 0:	LED_red(myLED_left);
+				break;
+		case 1:	LED_green(myLED_left);
+				break;
+		case 2:	LED_blue(myLED_left);
+				break;
+	}
 	digitalWrite(myLED_left, HIGH);
-
 
 
 }
