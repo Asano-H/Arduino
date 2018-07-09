@@ -7,54 +7,35 @@
 #define myswitch 8
 
 int color;
-int LED_time=100000;
 int LED_switch=0;
 
-void LED_red(){
-	digitalWrite(myLED_right, HIGH);
-	digitalWrite(myLED_left, HIGH);
-	digitalWrite(myLED_red,HIGH);
+void LED_red(int sign){
+	digitalWrite(myLED_red, HIGH);
+	digitalWrite(myLED_green, LOW);
+	digitalWrite(myLED_blue, LOW);
 
-	while(LED_time){
-		digitalWrite(myLED_left,LOW);
-		digitalWrite(myLED_left, HIGH);
-		digitalWrite(myLED_right,LOW);
-		digitalWrite(myLED_right, HIGH);
-		LED_time--;
+	digitalWrite(sign,LOW);
+	delay(1);
 	}
 
+void LED_green(int sign){
+	digitalWrite(myLED_red, LOW);
+	digitalWrite(myLED_green, HIGH);
+	digitalWrite(myLED_blue, LOW);
+
+	digitalWrite(sign,LOW);
+	delay(1);
+	
 }
 
-void LED_green(){
-	digitalWrite(myLED_right, HIGH);
-	digitalWrite(myLED_left, HIGH);
-	digitalWrite(myLED_green,HIGH);
+void LED_blue(int sign){
+	digitalWrite(myLED_red, LOW);
+	digitalWrite(myLED_green, LOW);
+	digitalWrite(myLED_blue, HIGH);
 
-	while(LED_time){
-		digitalWrite(myLED_left,LOW);
-		digitalWrite(myLED_left, HIGH);
-		digitalWrite(myLED_right,LOW);
-		digitalWrite(myLED_right, HIGH);
-		LED_time--;
-	}
-
+	digitalWrite(sign,LOW);
+	delay(1);
 }
-
-void LED_blue(){
-	digitalWrite(myLED_right, HIGH);
-	digitalWrite(myLED_left, HIGH);
-	digitalWrite(myLED_blue,HIGH);
-
-	while(LED_time){
-		digitalWrite(myLED_left,LOW);
-		digitalWrite(myLED_left, HIGH);
-		digitalWrite(myLED_right,LOW);
-		digitalWrite(myLED_right, HIGH);
-		LED_time--;
-	}
-
-}
-
 
 void setup() {
 	pinMode(myLED_right, OUTPUT);
@@ -64,29 +45,19 @@ void setup() {
 	pinMode(myLED_blue, OUTPUT);
 	pinMode(myswitch, INPUT);
 
+//消灯
+	digitalWrite(myLED_left, HIGH);
+	digitalWrite(myLED_right, HIGH);
 
-  
 }
 
 void loop() {
 
-	LED_switch =digitalRead(myswitch);
-	if(LED_switch==HIGH){
-		color = random(2);
-		if(color==0){
-			LED_red();
-		}else if(color==1){
-			LED_green();
-		}else if(color==2){
-			LED_blue();
-		}
-	}else{
-		digitalWrite(myLED_red, LOW);
-		digitalWrite(myLED_green, LOW);
-		digitalWrite(myLED_blue, LOW);
-		digitalWrite(myLED_right, LOW);
-		digitalWrite(myLED_left, LOW);
-	}
+	LED_red(myLED_right);
+	digitalWrite(myLED_right, HIGH);
+
+	LED_blue(myLED_left);
+	digitalWrite(myLED_left, HIGH);
 
 
 
