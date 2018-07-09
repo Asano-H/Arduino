@@ -1,13 +1,16 @@
-#define myLED_right	2
-#define myLED_left	3
-#define myLED_red	5
-#define myLED_green	6
-#define myLED_blue	7
+#define myLED_right	12
+#define myLED_left	13
+#define myLED_red	0
+#define myLED_green	1
+#define myLED_blue	2
 
 #define myswitch 8
 
+#define COLOR_NUM 3
+
 int color_left;
 int color_right;
+int flag=0;
 
 void LED_red(int sign){
 	digitalWrite(myLED_red, HIGH);
@@ -54,9 +57,10 @@ void setup() {
 void loop() {
 
 //ボタンが押されたとき，色を変える
-	if(digitalRead(myswitch)==HIGH){
-		color_right = random(3);
-		color_left = random(3);
+	flag = (!(flag));
+	if(flag){
+		color_right = random(COLOR_NUM);
+		color_left = random(COLOR_NUM);
 	}
 
 //右目の色を変える
