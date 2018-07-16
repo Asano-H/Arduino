@@ -310,14 +310,22 @@ digitalWrite(pico_sleep, LOW);	//スリープ状態
 
 void loop() {
 
-	//ボタンが押されたとき，色を変える
+	//5回ループしたとき，色を変える
 
-	flag = !(flag);
-	if(flag){
+	if(flag==5){
 		color_right = random(COLOR_NUM);
 		color_left = random(COLOR_NUM);
-
+		flag =0;
+	}else{
+		flag++;
 	}
+
+	// flag = !(flag);
+	// if(flag){
+	// 	color_right = random(COLOR_NUM);
+	// 	color_left = random(COLOR_NUM);
+
+	// }
 
 
 //右目の色を変える
